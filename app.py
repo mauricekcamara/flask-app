@@ -1,20 +1,24 @@
-from flask import Flask
+from flask import Flask, redirect, render_template
 import os
-import psycopg2
 
-app = Flask(__name__)
+
+from controllers.user_controller import user_controller
+
 
 DB_URL = os.environ.get("DATABASE_URL", "dbname=project2")
+SECRET_KEY = os.environ.get("SECRET_KEY", "password")
+
+app = Flask(__name__)
+app.config['SECRET_KEY'] = SECRET_KEY
 
 
 @app.route('/')
 def index():
-    conn = psycopg2.connect(DB_URL)
-    cur = conn.cursor()
-    cur.execute('SELECT 1', [])  # Query to check that the DB connected
-    conn.close()
-    return 'Hello, world!'
+    return render_template('signup.html')
 
+
+# Register Controllers
+app.register_blueprint(user_controller)
 
 if __name__ == "__main__":
     app.run(debug=True)
