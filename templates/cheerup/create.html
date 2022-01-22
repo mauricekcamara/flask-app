@@ -1,0 +1,13 @@
+{% extends 'index.html' %}
+{% block content %}
+    <form method="post" action="/cheerups">
+        <h2>Add a new cheerup</h2>   
+        <div>
+            <label for="body">Body</label>
+            <textarea id="body" name="body"></textarea>
+        </div>  
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+{% endblock content %}

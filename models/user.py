@@ -3,7 +3,7 @@ import database
 
 def get_user_by_email(email):
     results = database.sql_select(
-        'SELECT id, password from users WHERE email = %s', [email])
+        'SELECT * from users WHERE email = %s', [email])
     if len(results):
         result = results[0]
         return result

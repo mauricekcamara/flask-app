@@ -1,0 +1,16 @@
+{% extends 'index.html' %}
+{% block content %}
+<a href="/cheerups/create">Cheer Someone Up!</a>
+<body>
+    {% for cheer in cheerups %}
+    <div class="cheers">
+        <p>{{cheer['body']}}</p>
+        <span>By {{cheer['name']}}</span>
+        {% if session.get('user_id') and session.get('user_id') == cheer['user_id'] %}
+            <a href="/cheerups/{{cheer['id']}}/edit">Edit</a>
+            
+        {% endif %}
+        <hr>
+    </div>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,21 @@
+{% extends 'index.html' %}
+{% block content %}
+    <form method="post" action="/cheerups/{{ cheer['id'] }}">
+        <h2>Edit Your Cheerup</h2>
+        
+        <div>
+            <label for="body">Body</label>
+            <textarea id="body" name="body">{{cheer['body']}}</textarea>
+        </div>
+    
+        <div>
+            <button type="submit">Save</button>
+        </div>
+    </form>
+
+    <form action="/cheerups/{{cheer['id']}}/delete" method="POST">
+        <button type="submit">
+            Delete Cheer
+        </button>
+    </form>
+{% endblock content %}

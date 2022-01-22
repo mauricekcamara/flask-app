@@ -1,0 +1,8 @@
+{% extends 'index.html' %} {% block content %}
+    <div class="cheers">
+        <blockquote>{{cheer['body']}}</blockquote>
+        {% if session.get('user_id') %}
+            <a href="/cheerups/{{cheer['id']}}/edit">Edit</a>
+        {% endif %}
+    </div>
+{% endblock content %}
